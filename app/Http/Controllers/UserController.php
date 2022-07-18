@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function createUser(Request $request)
     {
-        $post = new user();
+        $post = new User();
         $post->name = $request->name;
         $post->email = $request->email;
         $post->phone = $request->number;
@@ -26,30 +26,30 @@ class UserController extends Controller
 
     public function view($id)
     {
-        // $post = user::where('id',$id)->first();
-        $post = user::find($id);
-        return view('user.edituser',compact('post'));
+        // $post = User::where('id',$id)->first();
+        $post = User::find($id);
+        return view('User.editUser',compact('post'));
     }
 
     public function editUsers(Request $request)
     {
-        $post = user::find($request->id);
+        $post = User::find($request->id);
         $post->name = $request->name;
         $post->email = $request->email;
         $post->phone = $request->number;
         $post->save();
-        return back()->with('edit_user', "User's detail has been updated successfully");
+        return back()->with('edit_User', "User's detail has been updated successfully");
         
     }
 
     public function deleteUser($id)
     {
-        $post = user::where('id',$id)->delete();
+        $post = User::where('id',$id)->delete();
         return back()->with('User_deleted','User has been deleted successfully');
     }
     public function getUsers()
     {
-        $post = user::orderBy('id','ASC')->get();
+        $post = User::all();
         return view('user.users',compact('post'));
     }
 }
