@@ -38,7 +38,7 @@ class UserController extends Controller
         $post->email = $request->email;
         $post->phone = $request->number;
         $post->save();
-        return back()->with('edit_User', "User's detail has been updated successfully");
+        return back()->with('edit_user', "User's detail has been updated successfully");
         
     }
 
