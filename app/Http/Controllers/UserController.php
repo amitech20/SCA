@@ -28,7 +28,7 @@ class UserController extends Controller
     {
         // $post = User::where('id',$id)->first();
         $post = User::find($id);
-        return view('User.editUser',compact('post'));
+        return view('user.editUser',compact('post'));
     }
 
     public function editUsers(Request $request)
